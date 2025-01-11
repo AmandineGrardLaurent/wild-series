@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 type ProgramType = {
   id: number;
@@ -7,10 +8,11 @@ type ProgramType = {
   poster: string;
   country: string;
   year: number;
+  category_id: number;
 };
 
-export default function Programs() {
-  const [programs, setPrograms] = useState([]);
+export default function Program() {
+  const [programs, setPrograms] = useState([] as ProgramType[]);
   useEffect(() => {
     fetch("http://localhost:3310/api/programs")
       .then((res) => res.json())
@@ -21,12 +23,16 @@ export default function Programs() {
   return (
     <div>
       <h1>Liste des séries : </h1>
+      <Link to={"/programs/new"}>Ajouter</Link>
       <ul>
         {programs.map((program: ProgramType) => (
           <li key={program.id}>
-            <h2>{program.title}</h2>
+            <Link to={`/programs/${program.id}`}>
+              <h2>{program.title}</h2>
+            </Link>
             <img src={program.poster} alt={program.title} />
             <h3>{program.country}</h3>
+            <h3>{program.category_id}</h3>
             <h3>{program.year}</h3>
             <p>{program.synopsis}</p>
           </li>
