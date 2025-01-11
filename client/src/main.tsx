@@ -11,6 +11,10 @@ import Programs from "./pages/program/Program";
 import ProgramDetail from "./pages/programDetail/ProgramDetail";
 import ProgramEdit from "./pages/programEdit/ProgramEdit";
 import ProgramNew from "./pages/programNew/ProgramNew";
+import CategoryDetail from "./pages/categoryDetail/CategoryDetail";
+import CategoryNew from "./pages/categoryNew/CategoryNew";
+import CategoryEdit from "./pages/categoryEdit/CategoryEdit";
+import CategoryIndex from "./pages/categoryIndex/CategoryIndex";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -26,14 +30,20 @@ const router = createBrowserRouter([
   {
     path: "/", // The root path
     element: <App />,
+    children: [
+      {
+        path: "/programs",
+        element: <Programs />, // Renders the App component for the home page
+      },
+      { path: "/programs/:id", element: <ProgramDetail /> },
+      { path: "/programs/new", element: <ProgramNew /> },
+      { path: "/programs/:id/edit", element: <ProgramEdit /> },
+      { path: "/categories/:id", element: <CategoryDetail /> },
+      { path: "/categories/new", element: <CategoryNew /> },
+      { path: "/categories/:id/edit", element: <CategoryEdit /> },
+      { path: "/categories", element: <CategoryIndex /> },
+    ],
   },
-  {
-    path: "/programs",
-    element: <Programs />, // Renders the App component for the home page
-  },
-  { path: "/programs/:id", element: <ProgramDetail /> },
-  { path: "programs/new", element: <ProgramNew /> },
-  { path: "programs/:id/edit", element: <ProgramEdit /> },
 
   // Try adding a new route! For example, "/about" with an About component
 ]);
