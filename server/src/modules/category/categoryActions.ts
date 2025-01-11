@@ -93,7 +93,24 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+// ...
+
+import joi from "joi";
+
+const categorySchema = joi.object({
+  name: joi.string().max(250).required(),
+});
+
+const validate: RequestHandler = (req, res, next) => {
+  const { error } = categorySchema.validate(req.body, { abortEarly: false });
+
+  if (error == null) {
+    next();
+  } else {
+    res.status(400).json({ validationErrors: error.details });
+  }
+};
 
 // Export them to import them somewhere else
 
-export default { browse, read, edit, add, destroy };
+export default { browse, read, edit, add, destroy, validate };
