@@ -35,7 +35,7 @@ class ProgramRepository {
         program.poster,
         program.country,
         program.year,
-        // program.category_id,
+        program.category_id,
         program.id,
       ],
     );

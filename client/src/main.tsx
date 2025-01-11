@@ -11,10 +11,10 @@ import CategoryDetail from "./pages/categoryDetail/CategoryDetail";
 import CategoryEdit from "./pages/categoryEdit/CategoryEdit";
 import CategoryIndex from "./pages/categoryIndex/CategoryIndex";
 import CategoryNew from "./pages/categoryNew/CategoryNew";
-import Programs from "./pages/program/Program";
 import ProgramDetail from "./pages/programDetail/ProgramDetail";
 import ProgramEdit from "./pages/programEdit/ProgramEdit";
 import ProgramNew from "./pages/programNew/ProgramNew";
+import Programs from "./pages/programs/Programs";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
