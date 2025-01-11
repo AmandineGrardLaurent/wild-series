@@ -11,10 +11,10 @@ type ProgramType = {
   category_id: number;
 };
 
-export default function Program() {
+export default function Programs() {
   const [programs, setPrograms] = useState([] as ProgramType[]);
   useEffect(() => {
-    fetch("http://localhost:3310/api/programs")
+    fetch(`${import.meta.env.VITE_API_URL}/api/programs`)
       .then((res) => res.json())
       .then((data) => setPrograms(data))
       .catch((error) => console.error("Error fetching programs:", error));
